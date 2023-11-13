@@ -5,25 +5,24 @@ export const SETTING = {
   mongodb: [
     {
       collection: 'user',
-      description: 'user profile schema demonstration',
+      description: 'Office member information',
       schema: {
-        userID: { type: IType.String, required: true },
+        department: { type: IType.String, required: true },
+        employeeID: { type: IType.String, required: true },
+        name: { type: IType.String, required: true },
         firstName: { type: IType.String, required: true },
         lastName: { type: IType.String, required: true },
+        userID: { type: IType.String, required: true },
+        extension: { type: IType.String, required: true },
         email: { type: IType.String, required: true },
-        photo: { type: IType.String, required: true },
-        age: { type: IType.Number, required: true },
-        timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
     {
-      collection: 'todo',
-      description: 'todo list schema demonstration',
+      collection: 'vote',
+      description: 'doing vote activity',
       schema: {
-        task: { type: IType.String, required: true },
-        description: { type: IType.String, required: true },
-        who: { type: IType.String, required: true },
-        done: { type: IType.Boolean, default: false },
+        employeeID: { type: IType.String, required: true },
+        vote: { type: IType.Boolean, required: true },
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
@@ -38,24 +37,23 @@ export const SETTING = {
 
 // type for mongodb
 export type TUser = {
-  userID: string;
+  department: string;
+  employeeID: string;
+  name: string;
   firstName: string;
   lastName: string;
+  userID: string;
+  extension: string;
   email: string;
-  photo: string;
-  age: number;
-  timestamp: string;
 };
 
-export type TTodo = {
-  task: string;
-  description: string;
-  who: string;
-  done: boolean;
+export type TVote = {
+  employeeID: string;
+  vote: boolean;
   timestamp: Date;
 };
 
-export type TYPE = TUser | TTodo;
+export type TYPE = TUser | TVote;
 
 // type for Rest api respond
 export type IRespond = {
