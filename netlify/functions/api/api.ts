@@ -2,13 +2,14 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Router } from 'express';
 import serverless from 'serverless-http';
-import connect from './connect';
-import select from './select';
-import insert from './insert';
-import deleteOne from './delete';
-import update from './update';
 import { SETTING } from '../../../setting';
 import { customMessage } from '../config';
+import connect from './connect';
+import deleteOne from './delete';
+import insert from './insert';
+import select from './select';
+import update from './update';
+import { checkIsVote } from './misc';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -54,28 +55,39 @@ router.post('/update', async (req, res) => {
 
 router.post('/check', async (req, res) => {
   const respond = await select({ collection: SETTING.mongodb[0].collection });
+  res.status(200).json(await checkIsVote(respond, req));
+});
+
+router.post('/signIn', async (req, res) => {
+  const respond = await select({ collection: SETTING.mongodb[0].collection });
   if (respond.res) {
     if (respond.data) {
-      const { body } = req;
-      const data = respond.data.filter((data) => data.extension === body.extension);
-      if (!data) res.status(200).json({ res: false, msg: customMessage.extensionNotFound });
-      else {
-        const voteRespond = await select({ collection: SETTING.mongodb[1].collection });
-        if (respond.res) {
-          if (!voteRespond.data) {
-            res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
-          } else {
-            const [checkVote] = voteRespond.data.filter((each) => {
-              each.extension === data[0].extension;
-            });
-            if (!checkVote) {
-              res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
-            } else res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
-          }
-        }
-      }
-    }
-  }
+      const { body = { extension: '', password: '**********' } } = req;
+      const [user] = respond.data.filter((user) => user.extension === body.extension);
+      if (user) {
+        const { userID } = user;
+        const password = userID.substr(String(userID).length - 4);
+        if (body.password === password) {
+          res.status(200).json({ res: true, msg: customMessage.登入成功 });
+        } else res.status(200).json({ res: true, msg: customMessage.密碼錯誤 });
+      } else res.status(200).json({ res: false, msg: customMessage.查無分機資料 });
+    } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
+  } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
+});
+
+router.post('/vote', async (req, res) => {
+  const { body } = req;
+  if (body.extension && body.vote !== undefined) {
+    // const { collection } = SETTING.mongodb[1];
+    res.status(200).json({ res: true, msg: customMessage.投票成功 });
+
+    // const respond = await insert({ collection, data: { ...body } });
+    // if (respond.res) {
+    //   if (respond.data) {
+    //     res.status(200).json({ res: true, msg: customMessage.投票成功 });
+    //   } else res.status(200).json({ res: false, msg: customMessage.投票失敗 });
+    // } else res.status(200).json({ res: false, msg: customMessage.投票失敗 });
+  } else res.status(200).json({ res: false, msg: customMessage.投票遺失資料 });
 });
 
 api.use('/api/', router);

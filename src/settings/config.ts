@@ -5,4 +5,7 @@ export const REST_PATH = {
   insert: 'insert',
   delete: 'delete',
   update: 'update',
+  check: 'check',
+  signIn: 'signIn',
+  vote: 'vote',
 };

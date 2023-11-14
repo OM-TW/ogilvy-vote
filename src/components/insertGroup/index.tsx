@@ -79,7 +79,8 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
   };
 
   return (
-    <div className='w-full flex justify-center'>
+    <div className='w-full bg-base-200 flex justify-center flex-col items-center space-y-4 p-5'>
+      <h1>Insert Table</h1>
       <form onSubmit={submit}>
         <div className='join join-vertical md:join-horizontal'>
           {Object.entries(type).map((item) => {
