@@ -7,6 +7,8 @@ import select from './select';
 import insert from './insert';
 import deleteOne from './delete';
 import update from './update';
+import { SETTING } from '../../../setting';
+import { customMessage } from '../config';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -48,6 +50,32 @@ router.post('/delete', async (req, res) => {
 router.post('/update', async (req, res) => {
   const respond = await update(req.body);
   res.status(200).json(respond);
+});
+
+router.post('/check', async (req, res) => {
+  const respond = await select({ collection: SETTING.mongodb[0].collection });
+  if (respond.res) {
+    if (respond.data) {
+      const { body } = req;
+      const data = respond.data.filter((data) => data.extension === body.extension);
+      if (!data) res.status(200).json({ res: false, msg: customMessage.extensionNotFound });
+      else {
+        const voteRespond = await select({ collection: SETTING.mongodb[1].collection });
+        if (respond.res) {
+          if (!voteRespond.data) {
+            res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
+          } else {
+            const [checkVote] = voteRespond.data.filter((each) => {
+              each.extension === data[0].extension;
+            });
+            if (!checkVote) {
+              res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
+            } else res.status(200).json({ res: false, msg: customMessage.extensionNotVote });
+          }
+        }
+      }
+    }
+  }
 });
 
 api.use('/api/', router);

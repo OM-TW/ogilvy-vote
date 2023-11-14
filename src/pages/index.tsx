@@ -53,6 +53,7 @@ const App = () => {
   const value: TContext = useMemo(() => [state, setState], [state]);
   const [res, getConnect] = useConnect();
   const { data, timestamp } = Storage.get(SETTING.dashboard.session.name);
+
   const status = useMemo(() => {
     if (!data) return false;
     else if (timestamp > SETTING.dashboard.session.time) return false;

@@ -11,3 +11,9 @@ export const messages = {
   updateSuccess: 'Data updated successfully',
   updateError: 'Data update failed',
 };
+
+export const customMessage = {
+  extensionNotFound: '查無此分機',
+  extensionVoted: '該分機已經投過票',
+  extensionNotVote: '該分機未投票',
+};

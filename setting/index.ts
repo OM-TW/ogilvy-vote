@@ -21,8 +21,9 @@ export const SETTING = {
       collection: 'vote',
       description: 'doing vote activity',
       schema: {
-        employeeID: { type: IType.String, required: true },
-        vote: { type: IType.Boolean, required: true },
+        name: { type: IType.String, required: true },
+        extension: { type: IType.String, required: true },
+        vote: { type: IType.String, required: true },
         timestamp: { type: IType.Date, default: 'Date.now()' },
       },
     },
