@@ -71,7 +71,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
           <div className='form-control mx-2'>
             <label className='label cursor-pointer space-x-2 pt-1'>
               <span className='label-text'>{key}</span>
-              <input type='checkbox' name={key} className='checkbox' />
+              <input type='checkbox' name={key} className='checkbox border-2' />
             </label>
           </div>
         );
@@ -79,7 +79,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
   };
 
   return (
-    <div className='w-full bg-base-200 flex justify-center flex-col items-center space-y-4 p-5'>
+    <div className='w-full bg-primary flex justify-center flex-col items-center space-y-4 p-5 py-10'>
       <h1>Insert Table</h1>
       <form onSubmit={submit}>
         <div className='join join-vertical md:join-horizontal'>
