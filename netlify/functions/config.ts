@@ -13,15 +13,18 @@ export const messages = {
 };
 
 export const customMessage = {
-  無該分機: '查無此分機',
-  已投票: '該分機已經投過票',
-  未投票: '該分機未投票',
-  分機檢查失敗: '檢查「是否已投票」失敗',
-  登入失敗: '驗證「登入」失敗',
-  查無分機資料: '找不到該員工資料',
-  登入成功: '登入成功',
-  密碼錯誤: '密碼錯誤',
-  投票遺失資料: '遺失投票分機或是方案選項',
-  投票失敗: '投票失敗',
-  投票成功: '計票成功',
+  // check
+  未投票: 'The extension has not yet voted.',
+  已投票: 'The extension has already cast a vote.',
+  無該分機: 'Extension not found.',
+  分機檢查失敗: 'The extension check failed.',
+  // sign in
+  登入成功: 'Login successful.',
+  密碼錯誤: 'Incorrect password.',
+  查無分機資料: 'Employee data not found.',
+  登入失敗: 'Login verification failed.',
+  // vote
+  投票成功: 'Vote counted successfully.',
+  投票遺失資料: 'Missing argument for parameter.',
+  投票失敗: 'Vote failed.',
 };
