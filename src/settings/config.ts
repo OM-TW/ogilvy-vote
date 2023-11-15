@@ -9,3 +9,5 @@ export const REST_PATH = {
   signIn: 'signIn',
   vote: 'vote',
 };
+
+export const TEASER_DATE = new Date(2023, 10, 30, 0, 0, 0);
