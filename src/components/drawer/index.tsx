@@ -6,29 +6,29 @@ import { SETTING } from '../../../setting';
 const Drawer = memo(({ children }: IReactProps) => (
   <div className='drawer lg:drawer-open'>
     <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
-    <div className='drawer-content flex flex-col pt-16 items-center justify-center relative'>
+    <div className='drawer-content relative flex flex-col items-center justify-center pt-16'>
       {children}
     </div>
     <div className='drawer-side'>
       <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay'></label>
-      <ul className='menu p-4 w-80 min-h-full bg-base-200 text-base-content'>
+      <ul className='menu min-h-full w-80 bg-base-200 p-4 text-base-content'>
         {/* Sidebar content here */}
         <div className='w-full py-5'>COLLECTION LIST</div>
         <li>
           {SETTING.mongodb.map((collection) => {
             return (
-              <Link key={collection.collection} to={`/${collection.collection}`}>
+              <Link key={collection.collection} to={`/admin/${collection.collection}`}>
                 {collection.collection}
               </Link>
             );
           })}
-          <Link to='/test'>
+          <Link to='/admin/test'>
             <svg
               fill='currentColor'
               viewBox='0 0 20 20'
               xmlns='http://www.w3.org/2000/svg'
               aria-hidden='true'
-              className='fill-white w-4 h-4'
+              className='h-4 w-4 fill-white'
             >
               <path
                 clipRule='evenodd'

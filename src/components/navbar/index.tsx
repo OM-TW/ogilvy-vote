@@ -2,14 +2,14 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = memo(() => (
-  <div className='navbar bg-base-300 absolute top-0'>
+  <div className='navbar absolute top-0 bg-base-300'>
     <div className='navbar-start'>
-      <Link to='/' className='btn btn-ghost normal-case text-xl'>
+      <Link to='/' className='btn btn-ghost text-xl normal-case'>
         Dashboard
       </Link>
     </div>
     <div className='navbar-end'>
-      <label htmlFor='my-drawer-2' className='lg:hidden btn drawer-button'>
+      <label htmlFor='my-drawer-2' className='btn drawer-button lg:hidden'>
         Menu
       </label>
     </div>

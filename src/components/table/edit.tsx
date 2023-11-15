@@ -39,7 +39,7 @@ const Element = ({
       return (
         <input
           key={JSON.stringify(key) + index}
-          className='input input-sm input-bordered join-item'
+          className='input join-item input-bordered input-sm'
           placeholder={key}
           name={key}
           type='text'
@@ -51,7 +51,7 @@ const Element = ({
       return (
         <input
           key={JSON.stringify(key) + index}
-          className='input input-sm input-bordered join-item'
+          className='input join-item input-bordered input-sm'
           placeholder={key}
           name={key}
           type='number'
@@ -148,7 +148,7 @@ const Edit = memo(({ children, type, collection, data, update }: IReactProps & T
           },
         });
       }}
-      className='btn btn-xs btn-info'
+      className='btn btn-info btn-xs'
     >
       {children}
     </button>

@@ -9,7 +9,7 @@ const Modal = memo(() => {
   return (
     <dialog id='my_modal_4' className='modal modal-open'>
       <div className='modal-box w-11/12 max-w-7xl'>
-        <h3 className='font-bold text-lg'>{title}</h3>
+        <h3 className='text-lg font-bold'>{title}</h3>
         <div className='py-4'>{body}</div>
         <div className='modal-action'>
           <form method='dialog'>
@@ -17,7 +17,7 @@ const Modal = memo(() => {
               onClick={() => {
                 setContext({ type: ActionType.modal, state: { enabled: false } });
               }}
-              className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
+              className='btn btn-circle btn-ghost btn-sm absolute right-2 top-2'
             >
               ✕
             </button>

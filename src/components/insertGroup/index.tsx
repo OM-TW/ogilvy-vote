@@ -51,7 +51,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
       case IType.String:
         return (
           <input
-            className='input input-sm input-bordered join-item'
+            className='input join-item input-bordered input-sm'
             placeholder={key}
             name={key}
             type='text'
@@ -60,7 +60,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
       case IType.Number:
         return (
           <input
-            className='input input-sm input-bordered join-item'
+            className='input join-item input-bordered input-sm'
             placeholder={key}
             name={key}
             type='number'
@@ -79,7 +79,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
   };
 
   return (
-    <div className='w-full bg-primary flex justify-center flex-col items-center space-y-4 p-5 py-10'>
+    <div className='flex w-full flex-col items-center justify-center space-y-4 bg-primary p-5 py-10'>
       <h1>Insert Table</h1>
       <form onSubmit={submit}>
         <div className='join join-vertical md:join-horizontal'>
@@ -93,7 +93,7 @@ const InsertGroup = memo(({ type, collection, onSubmit }: TProps) => {
             );
           })}
           <div className='indicator'>
-            <button type='submit' className='btn btn-sm join-item'>
+            <button type='submit' className='btn join-item btn-sm'>
               Submit
             </button>
           </div>

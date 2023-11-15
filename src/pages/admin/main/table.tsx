@@ -1,6 +1,6 @@
 import { Prettify } from '@/settings/type';
 import { memo, useMemo } from 'react';
-import { SETTING } from '../../../setting';
+import { SETTING } from '../../../../setting';
 import './index.less';
 
 type T = typeof SETTING.mongodb;
@@ -33,8 +33,8 @@ const Table = memo(({ data }: Prettify<{ data: T }>) => {
       <div className='mockup-browser-toolbar'>
         <div className='input border border-base-300'>{`/ ${collection}`}</div>
       </div>
-      <div className='flex justify-center px-4 py-16 border-t bg-base-300 border-base-300'>
-        <div className='overflow-x-auto w-full'>
+      <div className='flex justify-center border-t border-base-300 bg-base-300 px-4 py-16'>
+        <div className='w-full overflow-x-auto'>
           <table className='table'>
             <thead>
               <tr>
