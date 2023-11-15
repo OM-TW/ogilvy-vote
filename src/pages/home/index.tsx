@@ -18,9 +18,7 @@ const Unit = ['天', '小時', '分鐘', '秒'];
 
 const Home = memo(() => {
   const [date] = useCountdown(TEASER_DATE);
-
   const navigate = useNavigate();
-
   return (
     <div className='Home'>
       <Card
