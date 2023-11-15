@@ -99,7 +99,11 @@ router.post('/signIn', async (req, res) => {
           if (body.password === password) {
             res.status(200).json({ res: true, msg: customMessage.登入成功 });
           } else res.status(200).json({ res: true, msg: customMessage.密碼錯誤 });
-        } else res.status(200).json({ res: false, msg: customMessage.查無分機資料 });
+        } else {
+          res
+            .status(200)
+            .json({ res: false, msg: customMessage.查無分機資料, data: [{ body, user }] });
+        }
       } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
     } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
   }
