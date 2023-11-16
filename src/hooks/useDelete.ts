@@ -13,7 +13,7 @@ const useDelete = () => {
   const [state, setState] = useState<TResult>();
   const fetch = async (parm: { collection: string; data: TDelete }) => {
     setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
-    const respond = (await Fetcher.post(REST_PATH.delete, parm)) as TResult;
+    const respond = (await Fetcher.post(REST_PATH.delete, parm)) as IRespond;
     setState(respond);
     setContext({ type: ActionType.LoadingProcess, state: { enabled: false } });
   };

@@ -74,6 +74,11 @@ router.post('/update', async (req, res) => {
 });
 
 router.post('/check', async (req, res) => {
+  if (!req.body) {
+    res.status(200).json({ res: false, msg: customMessage.無參數帶入, data: [{ req }] });
+    return;
+  }
+
   const connection = await connect();
   if (!connection.res) {
     res.status(200).json({ res: false, msg: messages.connectError });
@@ -84,6 +89,11 @@ router.post('/check', async (req, res) => {
 });
 
 router.post('/signIn', async (req, res) => {
+  if (!req.body) {
+    res.status(200).json({ res: false, msg: customMessage.無參數帶入, data: [{ req }] });
+    return;
+  }
+
   const connection = await connect();
   if (!connection.res) {
     res.status(200).json({ res: false, msg: messages.connectError });
@@ -93,20 +103,16 @@ router.post('/signIn', async (req, res) => {
       if (respond.data) {
         const { body } = req;
         const [user] = respond.data.filter((user) => user.extension === body.extension);
-        if (!body) {
-          res.status(200).json({ res: false, msg: 'request body error', data: [{ req }] });
+        if (user) {
+          const { userID } = user;
+          const password = userID.substr(String(userID).length - 4);
+          if (body.password === password) {
+            res.status(200).json({ res: true, msg: customMessage.登入成功 });
+          } else res.status(200).json({ res: true, msg: customMessage.密碼錯誤 });
         } else {
-          if (user) {
-            const { userID } = user;
-            const password = userID.substr(String(userID).length - 4);
-            if (body.password === password) {
-              res.status(200).json({ res: true, msg: customMessage.登入成功 });
-            } else res.status(200).json({ res: true, msg: customMessage.密碼錯誤 });
-          } else {
-            res
-              .status(200)
-              .json({ res: false, msg: customMessage.查無分機資料, data: [{ body, user }] });
-          }
+          res
+            .status(200)
+            .json({ res: false, msg: customMessage.查無分機資料, data: [{ body, user }] });
         }
       } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
     } else res.status(200).json({ res: false, msg: customMessage.登入失敗 });
@@ -114,6 +120,10 @@ router.post('/signIn', async (req, res) => {
 });
 
 router.post('/vote', async (req, res) => {
+  if (!req.body) {
+    res.status(200).json({ res: false, msg: customMessage.無參數帶入, data: [{ req }] });
+    return;
+  }
   const connection = await connect();
   if (!connection.res) {
     res.status(200).json({ res: false, msg: messages.connectError });

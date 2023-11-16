@@ -5,12 +5,10 @@ import { Context } from '../settings/constant';
 import { ActionType } from '@/settings/type';
 import { IRespond } from '../../setting';
 
-export type TResult = IRespond | undefined;
 export type TVoteArgument = { extension: string; vote: boolean };
-
 const useVote = () => {
   const [, setContext] = useContext(Context);
-  const [state, setState] = useState<TResult>();
+  const [state, setState] = useState<IRespond | undefined>();
   const fetch = async (parm: TVoteArgument) => {
     setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
     const respond = (await Fetcher.post(REST_PATH.vote, parm)) as IRespond;

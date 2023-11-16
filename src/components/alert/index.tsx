@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { error, info, normal, success, warning } from './icon';
 
 const Alert = memo(() => {
-  const ref = useRef<any>();
+  const ref = useRef<NodeJS.Timeout>();
 
   const [context, setContext] = useContext(Context);
   const alert = context[ActionType.Alert];

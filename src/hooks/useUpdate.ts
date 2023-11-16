@@ -5,18 +5,13 @@ import { IRespond, TYPE } from '../../setting';
 import { REST_PATH } from '../settings/config';
 import { Context } from '../settings/constant';
 
-export type TResult = IRespond | undefined;
-type TUpdate = {
-  filter: string;
-  data: Partial<TYPE>;
-};
-
+type TUpdateArgument = { filter: string; data: Partial<TYPE> };
 const useUpdate = () => {
   const [, setContext] = useContext(Context);
-  const [state, setState] = useState<TResult>();
-  const fetch = async (parm: { collection: string; data: TUpdate }) => {
+  const [state, setState] = useState<IRespond | undefined>();
+  const fetch = async (parm: { collection: string; data: TUpdateArgument }) => {
     setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
-    const respond = (await Fetcher.post(REST_PATH.update, parm)) as TResult;
+    const respond = (await Fetcher.post(REST_PATH.update, parm)) as IRespond;
     setState(respond);
     setContext({ type: ActionType.LoadingProcess, state: { enabled: false } });
   };

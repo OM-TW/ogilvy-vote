@@ -5,12 +5,10 @@ import { Context } from '../settings/constant';
 import { ActionType } from '@/settings/type';
 import { IRespond } from '../../setting';
 
-export type TResult = IRespond | undefined;
 export type TCheckArgument = { extension: string };
-
 const useCheck = () => {
   const [, setContext] = useContext(Context);
-  const [state, setState] = useState<TResult>();
+  const [state, setState] = useState<IRespond | undefined>();
   const fetch = async (parm: TCheckArgument) => {
     setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
     const respond = (await Fetcher.post(REST_PATH.check, parm)) as IRespond;
