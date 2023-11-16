@@ -12,7 +12,7 @@ const Drawer = memo(({ children }: IReactProps) => (
     </div>
     <div className='drawer-side'>
       <label htmlFor='my-drawer-2' aria-label='close sidebar' className='drawer-overlay'></label>
-      <ul className='menu min-h-full w-80 bg-base-200 p-4 text-base-content'>
+      <ul className='menu min-h-full w-52 bg-base-200 p-4 text-base-content'>
         <div className='w-full py-5'>COLLECTION LIST</div>
         <li>
           {SETTING.mongodb.map((collection) => {
