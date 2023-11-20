@@ -1,0 +1,31 @@
+.Stamp {
+  @apply flex select-none flex-col items-center justify-center;
+
+  .symbol {
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+    mask-image: url(@img);
+    mask-size: 100%;
+
+    @scale: 0.4;
+    @img: './img/stamp.svg';
+
+    @apply bg-primary;
+  }
+
+  .text {
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+    mask-image: url(@img);
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+
+    @scale: 0.45;
+    @img: './img/take-your-vote.svg';
+
+    @apply mt-3 bg-accent;
+  }
+
+  .clock {
+  }
+}

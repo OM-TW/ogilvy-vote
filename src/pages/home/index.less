@@ -1,3 +1,11 @@
 .Home {
-  @apply flex h-full w-full flex-row items-center justify-center bg-base-300;
+  min-height: 600px;
+  @apply flex h-full w-full flex-col;
+
+  & > section:nth-child(1) {
+    @apply bg-secondary;
+  }
+  & > section:nth-child(2) {
+    @apply bg-accent;
+  }
 }

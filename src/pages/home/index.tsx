@@ -1,63 +1,45 @@
-import { TEASER_DATE } from '@/settings/config';
-import { useCountdown } from 'lesca-use-countdown';
-import { memo } from 'react';
-import { useNavigate } from 'react-router';
-import { twMerge } from 'tailwind-merge';
-import Card from './card';
-import ActivityImage from './img/vote-box.jpg';
-import AminImage from './img/web-ui.jpg';
+import Logo from '@/components/logo';
+import Pattern from '@/components/pattern';
+import Section from '@/components/section';
+import { memo, useContext, useEffect, useState } from 'react';
 import './index.less';
-
-const Button = ({ onClick, disable = false }: { onClick: () => void; disable?: boolean }) => (
-  <button className={twMerge('btn btn-primary', disable && 'btn-disabled')} onClick={onClick}>
-    Launch
-  </button>
-);
-
-const Unit = ['天', '小時', '分鐘', '秒'];
+import Stamp from './stamp';
+import { HomeContext, HomeState, HomeStepType, THomeState } from './config';
+import Countdown from './countdown';
+import OnloadProvider from 'lesca-react-onload';
+import { Context } from '@/settings/constant';
+import { ActionType } from '@/settings/type';
 
 const Home = memo(() => {
-  const [date] = useCountdown(TEASER_DATE);
-  const navigate = useNavigate();
+  const [, setContext] = useContext(Context);
+  const value = useState<THomeState>(HomeState);
+  const [, setState] = value;
+
+  useEffect(() => {
+    setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
+  }, []);
+
   return (
-    <div className='Home'>
-      <Card
-        title='Ogilvy-vote-page'
-        url={ActivityImage}
-        button={
-          <Button
-            disable
-            onClick={() => {
-              navigate('/admin');
-            }}
-          />
-        }
+    <HomeContext.Provider value={value}>
+      <OnloadProvider
+        onload={() => {
+          setState((S) => ({ ...S, step: HomeStepType.fadeIn }));
+          setContext({ type: ActionType.LoadingProcess, state: { enabled: false } });
+        }}
       >
-        <div className='flex flex-row justify-center'>
-          <p>開始投票還剩</p>
-          <div className='bg-primary px-2'>
-            {date
-              .map((e, i) => {
-                return `${e}${Unit[i]}`;
-              })
-              .join(' ')}
-          </div>
+        <div className='Home'>
+          <Section top>
+            <Logo />
+            <Pattern top />
+            <Stamp />
+          </Section>
+          <Section>
+            <Pattern />
+            <Countdown />
+          </Section>
         </div>
-      </Card>
-      <Card
-        title='Dashboard-admin'
-        url={AminImage}
-        button={
-          <Button
-            onClick={() => {
-              navigate('/admin');
-            }}
-          />
-        }
-      >
-        <p>活動資料庫後臺和Rest API測試</p>
-      </Card>
-    </div>
+      </OnloadProvider>
+    </HomeContext.Provider>
   );
 });
 export default Home;

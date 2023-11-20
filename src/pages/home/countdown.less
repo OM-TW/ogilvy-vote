@@ -1,0 +1,33 @@
+.Countdown {
+  @apply flex flex-col items-center justify-center;
+
+  .text {
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+    mask-image: url(@img);
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+
+    @scale: 0.45;
+    @img: './img/days-of-countdown.svg';
+
+    @apply mt-3 bg-secondary;
+  }
+
+  .clock {
+    @apply flex flex-row items-baseline justify-center text-6xl text-secondary xl:text-7xl;
+
+    .day {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+      mask-image: url(@img);
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+
+      @scale: 0.45;
+      @img: './img/day.svg';
+
+      @apply mr-3 bg-secondary;
+    }
+  }
+}

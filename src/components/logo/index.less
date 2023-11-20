@@ -1,0 +1,11 @@
+.Logo {
+  width: image-width(@img) * @scale;
+  height: image-height(@img) * @scale;
+  background-image: url(@img);
+  background-size: 100%;
+
+  @scale: 1;
+  @img: './img/logo.svg';
+
+  @apply absolute left-5 top-5;
+}

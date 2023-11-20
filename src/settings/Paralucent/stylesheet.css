@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'ParalucentW00';
+    src: url('subset-ParalucentW00-DemiBold.woff2') format('woff2'),
+        url('subset-ParalucentW00-DemiBold.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

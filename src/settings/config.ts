@@ -10,4 +10,6 @@ export const REST_PATH = {
   vote: 'vote',
 };
 
-export const TEASER_DATE = new Date(2023, 10, 30, 0, 0, 0);
+export const TEASER_DATE = new Date(2023, 10, 30, 9, 0, 0);
+
+console.log(TEASER_DATE);
