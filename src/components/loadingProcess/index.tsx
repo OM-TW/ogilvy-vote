@@ -3,7 +3,7 @@ import { ActionType, IReactProps } from '@/settings/type';
 import { memo, useContext } from 'react';
 import ReactLoading from 'react-loading';
 
-const Background = () => <div className='absolute top-0 h-full w-full bg-secondary opacity-80' />;
+const Background = () => <div className='absolute top-0 h-full w-full bg-secondary' />;
 
 const Text = ({ children }: IReactProps) => <span className='relative uppercase'>{children}</span>;
 
