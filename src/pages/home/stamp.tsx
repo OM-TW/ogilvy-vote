@@ -27,7 +27,7 @@ const VoteDate = () => {
   return (
     <div
       style={style}
-      className='relative -mt-5 rounded-2xl border-4 border-accent bg-secondary px-5 py-2 text-5xl text-accent'
+      className='relative -mt-3 rounded-xl border-2 border-accent bg-secondary px-2 py-0 text-3xl tracking-wide text-accent'
     >
       11/30 9:00
     </div>

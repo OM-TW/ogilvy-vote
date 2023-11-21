@@ -48,15 +48,16 @@ const Outline = ({ top }: { top?: boolean }) => {
 const BottomLine = () => {
   const [state, setState] = useContext(HomeContext);
   const { step } = state;
-  const [style, setStyle] = useTween({ opacity: 0, x: 50 });
+  const [style, setStyle] = useTween({ opacity: 0, x: 80, y: 8, scale: 0.95 });
 
   useEffect(() => {
     if (step === HomeStepType.fadeIn) {
       setStyle(
-        { opacity: 1, x: 0 },
+        { opacity: 1, x: 8 },
         {
-          duration: 500,
-          delay: 1800,
+          duration: 300,
+          delay: 1100,
+          easing: Bezier.outBack,
           onEnd: () => {
             setState((S) => ({ ...S, step: HomeStepType.patternIn }));
           },
@@ -71,11 +72,11 @@ const BottomLine = () => {
 const TopLine = () => {
   const [state] = useContext(HomeContext);
   const { step } = state;
-  const [style, setStyle] = useTween({ opacity: 0, x: -50 });
+  const [style, setStyle] = useTween({ opacity: 0, x: -80, y: 8, scale: 0.95 });
 
   useEffect(() => {
     if (step === HomeStepType.fadeIn) {
-      setStyle({ opacity: 1, x: 0 }, { duration: 500, delay: 1500 });
+      setStyle({ opacity: 1, x: 8 }, { duration: 300, delay: 1100, easing: Bezier.outBack });
     }
   }, [step]);
 

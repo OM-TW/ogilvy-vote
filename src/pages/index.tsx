@@ -10,6 +10,11 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Admin from './admin';
 import Home from './home';
+import Click from 'lesca-click';
+import Gtag from 'lesca-gtag';
+
+Click.install();
+Gtag.install(import.meta.env.VITE_GAID);
 
 Fetcher.install({
   hostUrl: import.meta.env.VITE_API_PATH || './api',

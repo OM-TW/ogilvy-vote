@@ -1,9 +1,9 @@
 .Pattern {
-  @apply absolute w-full max-w-2xl p-7;
+  @apply absolute w-full max-w-lg px-2;
 
   .text {
     padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
-    margin-left: 1%;
+    margin-left: 0%;
 
     @img: './img/text.svg';
     @apply relative w-full;
@@ -11,6 +11,7 @@
     .t {
       background-image: url(@img);
       background-size: 100%;
+      transform-origin: center bottom;
       background-repeat: no-repeat;
       @apply absolute top-0 h-1/2 w-full;
     }
@@ -19,19 +20,20 @@
       background-image: url(@img);
       background-size: 100%;
       background-repeat: no-repeat;
+      transform-origin: center top;
       background-position: bottom;
 
-      @apply absolute top-1/2 h-1/2 w-full;
+      @apply absolute top-1/2 h-1/2 w-full scale-90;
     }
 
     & > div {
-      @apply absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center p-5;
+      @apply absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center p-0;
 
       .ol {
         padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
         mask-image: url(@img);
         mask-size: 100%;
-        margin-top: -4%;
+        margin-top: 1%;
         background-color: #000;
         mask-repeat: no-repeat;
 
@@ -43,8 +45,8 @@
           @apply absolute bottom-0 left-0 right-0 top-0;
 
           & > div {
-            padding: 16%;
-            margin-top: -1%;
+            padding: 14%;
+            margin-top: 0;
 
             .title {
               padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);

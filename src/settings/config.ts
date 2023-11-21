@@ -11,5 +11,3 @@ export const REST_PATH = {
 };
 
 export const TEASER_DATE = new Date(2023, 10, 30, 9, 0, 0);
-
-console.log(TEASER_DATE);
