@@ -1,0 +1,13 @@
+:root {
+  --color-red: rgb(235, 63, 67);
+  --color-yellow: rgb(241, 255, 83);
+  --color-purple: rgb(137, 73, 255);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --color-red: color(display-p3 0.92156862745098 0.247058823529412 0.262745098039216);
+    --color-yellow: color(display-p3 0.945098039215686 1 0.325490196078431);
+    --color-purple: color(display-p3 0.537254901960784 0.286274509803922 1);
+  }
+}

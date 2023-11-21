@@ -6,11 +6,10 @@
     height: image-height(@img) * @scale;
     mask-image: url(@img);
     mask-size: 100%;
+    background: var(--color-red);
 
     @scale: 0.25;
     @img: './img/stamp.svg';
-
-    @apply bg-primary;
   }
 
   .text {
@@ -19,13 +18,11 @@
     mask-image: url(@img);
     mask-size: 100%;
     mask-repeat: no-repeat;
+    background: var(--color-purple);
 
     @scale: 0.45;
     @img: './img/take-your-vote.svg';
 
-    @apply mt-3 bg-accent;
-  }
-
-  .clock {
+    @apply mt-3;
   }
 }

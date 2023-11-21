@@ -9,14 +9,29 @@ import Countdown from './countdown';
 import OnloadProvider from 'lesca-react-onload';
 import { Context } from '@/settings/constant';
 import { ActionType } from '@/settings/type';
+import { useNavigate } from 'react-router-dom';
 
 const Home = memo(() => {
   const [, setContext] = useContext(Context);
   const value = useState<THomeState>(HomeState);
   const [, setState] = value;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
+
+    const keydown = (e: KeyboardEvent) => {
+      const { key } = e;
+      if (key === '.') {
+        navigate('/admin');
+      }
+    };
+
+    window.addEventListener('keydown', keydown);
+    return () => {
+      window.removeEventListener('keydown', keydown);
+    };
   }, []);
 
   return (

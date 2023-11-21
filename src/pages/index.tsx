@@ -4,14 +4,14 @@ import Modal from '@/components/modal/index.tsx';
 import { Context, InitialState, Reducer } from '@/settings/constant';
 import '@/settings/global.less';
 import { ActionType, TContext } from '@/settings/type';
+import Click from 'lesca-click';
 import Fetcher, { contentType, formatType } from 'lesca-fetcher';
+import Gtag from 'lesca-gtag';
 import { useMemo, useReducer } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Admin from './admin';
 import Home from './home';
-import Click from 'lesca-click';
-import Gtag from 'lesca-gtag';
 
 Click.install();
 Gtag.install(import.meta.env.VITE_GAID);
@@ -31,6 +31,7 @@ if (import.meta.env.VITE_MOCKING === 'true') {
 const App = () => {
   const [state, setState] = useReducer(Reducer, InitialState);
   const value: TContext = useMemo(() => [state, setState], [state]);
+
   return (
     <Context.Provider {...{ value }}>
       <div className='App'>

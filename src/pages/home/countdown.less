@@ -7,15 +7,17 @@
     mask-image: url(@img);
     mask-size: 100%;
     mask-repeat: no-repeat;
+    background: var(--color-yellow);
 
     @scale: 0.45;
     @img: './img/days-of-countdown.svg';
 
-    @apply mt-3 bg-secondary;
+    @apply mt-3;
   }
 
   .clock {
-    @apply flex flex-row items-baseline justify-center text-6xl text-secondary xl:text-7xl;
+    color: var(--color-yellow);
+    @apply flex flex-row items-baseline justify-center text-6xl xl:text-7xl;
 
     .day {
       width: image-width(@img) * @scale;
@@ -23,11 +25,11 @@
       mask-image: url(@img);
       mask-size: 100%;
       mask-repeat: no-repeat;
-
+      background: var(--color-yellow);
       @scale: 0.45;
       @img: './img/day.svg';
 
-      @apply mr-3 bg-secondary;
+      @apply mr-3;
     }
   }
 }
