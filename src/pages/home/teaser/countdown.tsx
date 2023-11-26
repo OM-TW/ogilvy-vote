@@ -1,9 +1,7 @@
-import { TEASER_DATE } from '@/settings/config';
 import { Pad } from 'lesca-number';
-import { useCountdown } from 'lesca-use-countdown';
 import useTween from 'lesca-use-tween';
 import { Fragment, memo, useContext, useEffect } from 'react';
-import { HomeContext, HomeStepType } from './config';
+import { HomeContext, HomeStepType } from '../config';
 import './countdown.less';
 
 const Unit = [<div className='day' />, <span>:</span>, <span>:</span>, ''];
@@ -20,8 +18,7 @@ const Text = () => {
   return <div className='text' style={style} />;
 };
 
-const Clock = () => {
-  const [date] = useCountdown(TEASER_DATE);
+const Clock = ({ date }: { date: number[] }) => {
   const [style, setStyle] = useTween({ opacity: 0, y: 50 });
   const [state] = useContext(HomeContext);
   const { step } = state;
@@ -43,10 +40,10 @@ const Clock = () => {
   );
 };
 
-const Countdown = memo(() => (
+const Countdown = memo(({ date }: { date: number[] }) => (
   <div className='Countdown'>
     <Text />
-    <Clock />
+    <Clock date={date} />
   </div>
 ));
 export default Countdown;

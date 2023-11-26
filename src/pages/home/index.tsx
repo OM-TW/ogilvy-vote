@@ -1,59 +1,51 @@
-import Logo from '@/components/logo';
-import Pattern from '@/components/pattern';
-import Section from '@/components/section';
-import { memo, useContext, useEffect, useState } from 'react';
-import './index.less';
-import Stamp from './stamp';
-import { HomeContext, HomeState, HomeStepType, THomeState } from './config';
-import Countdown from './countdown';
-import OnloadProvider from 'lesca-react-onload';
-import { Context } from '@/settings/constant';
-import { ActionType } from '@/settings/type';
+import { TEASER_DATE } from '@/settings/config';
+import useCountdown from 'lesca-use-countdown';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HomeContext, HomePageType, HomeState, THomeState } from './config';
+import './index.less';
+import Teaser from './teaser';
+import Polling from './polling';
 
 const Home = memo(() => {
-  const [, setContext] = useContext(Context);
   const value = useState<THomeState>(HomeState);
-  const [, setState] = value;
-
+  const [state] = value;
+  const { page } = state;
+  const [date] = useCountdown(TEASER_DATE);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
-
     const keydown = (e: KeyboardEvent) => {
       const { key } = e;
-      if (key === '.') {
-        navigate('/admin');
-      }
+      if (key === '.') navigate('/admin');
     };
 
     window.addEventListener('keydown', keydown);
-    return () => {
-      window.removeEventListener('keydown', keydown);
-    };
+    return () => window.removeEventListener('keydown', keydown);
   }, []);
+
+  const Page = useMemo(() => {
+    const [day, hours, minute, second] = date;
+    let currentPage = HomePageType.teaser;
+    if (!day && !hours && !minute && !second) {
+      if (page === HomePageType.billing) currentPage = HomePageType.billing;
+      else currentPage = HomePageType.polling;
+    } else currentPage = HomePageType.teaser;
+
+    switch (currentPage) {
+      case HomePageType.billing:
+        return <div />;
+      case HomePageType.polling:
+        return <Polling />;
+      default:
+      case HomePageType.teaser:
+        return <Teaser date={date} />;
+    }
+  }, [date, page]);
 
   return (
     <HomeContext.Provider value={value}>
-      <OnloadProvider
-        onload={() => {
-          setState((S) => ({ ...S, step: HomeStepType.fadeIn }));
-          setContext({ type: ActionType.LoadingProcess, state: { enabled: false } });
-        }}
-      >
-        <div className='Home'>
-          <Section top>
-            <Logo />
-            <Pattern top />
-            <Stamp />
-          </Section>
-          <Section>
-            <Pattern />
-            <Countdown />
-          </Section>
-        </div>
-      </OnloadProvider>
+      <div className='Home'>{Page}</div>
     </HomeContext.Provider>
   );
 });

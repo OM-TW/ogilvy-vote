@@ -1,5 +1,5 @@
 import { memo, useContext, useEffect } from 'react';
-import { HomeContext, HomeStepType } from './config';
+import { HomeContext, HomeStepType } from '../config';
 import './stamp.less';
 import useTween from 'lesca-use-tween';
 
