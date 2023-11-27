@@ -1,0 +1,36 @@
+.Stamps {
+  .square {
+    position: relative;
+    color: var(--color-purple);
+    @apply h-8 w-44;
+
+    &::before {
+      position: absolute;
+      left: 50%;
+      margin-top: -37px;
+      margin-left: 0 - image-width(@img) * @scale * 0.5;
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+      background-color: var(--color-red);
+      content: '';
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      @scale: 0.4;
+      @img: './img/stamp.svg';
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-color: var(--color-purple);
+      background-color: var(--color-gray);
+      content: '投下你的一票';
+
+      @apply font-FZLanTingHeiT border-t-2 pt-1 text-center text-lg tracking-wider;
+    }
+  }
+}

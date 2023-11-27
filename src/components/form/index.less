@@ -1,0 +1,79 @@
+.regularForm {
+  @apply flex w-full flex-col items-center justify-center space-y-4;
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+  }
+
+  .label {
+    background-color: var(--color-red);
+
+    mask-size: 100%;
+  }
+
+  .extension {
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+
+    mask-image: url(@img);
+    @scale: 0.5;
+    @img: './img/extension.svg';
+  }
+
+  .password {
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+
+    mask-image: url(@img);
+    @scale: 0.5;
+    @img: './img/password.svg';
+  }
+
+  input[name='extension'],
+  input[name='password'] {
+    margin: 0;
+    outline: none;
+    border-color: var(--color-red);
+    color: var(--color-red);
+
+    @apply w-full rounded-xl border-2 bg-white px-5 py-0 text-center font-paralucent text-5xl;
+  }
+
+  .buttonContainer {
+    @apply pt-16;
+
+    button[type='submit'] {
+      background-color: var(--color-red);
+
+      @apply font-FZLanTingHeiT flex h-16 w-56 items-center justify-center rounded-2xl;
+
+      .conform {
+        width: image-width(@img) * @scale;
+        height: image-height(@img) * @scale;
+        background-color: var(--color-gray);
+
+        mask-image: url(@img);
+        mask-size: 100%;
+        @scale: 0.5;
+        @img: './img/conform.svg';
+      }
+
+      &:hover {
+        border-color: var(--color-red);
+        background-color: var(--color-gray);
+        @apply border-2;
+        .conform {
+          background-color: var(--color-red);
+        }
+      }
+    }
+  }
+  @media only screen and (max-height: 600px) {
+    .buttonContainer {
+      @apply pt-0;
+    }
+  }
+}

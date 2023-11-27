@@ -8,6 +8,7 @@ export default {
     fontFamily: {
       ...fontFamily,
       paralucent: ['ParalucentW00', 'sans-serif'],
+      FZLanTingHeiT: ['FZLanTingHeiT-H-GB', 'sans'],
     },
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui'), 'prettier-plugin-tailwindcss'],
