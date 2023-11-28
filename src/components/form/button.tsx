@@ -1,12 +1,9 @@
-import { memo, useEffect } from 'react';
 import { IReactProps } from '@/settings/type';
+import { memo } from 'react';
 
-const Button = memo(({ children }: IReactProps) => {
-  useEffect(() => {}, []);
-  return (
-    <div className='buttonContainer'>
-      <button type='submit'>{children}</button>
-    </div>
-  );
-});
+const Button = memo(({ children }: IReactProps) => (
+  <div className='buttonContainer'>
+    <button type='submit'>{children}</button>
+  </div>
+));
 export default Button;

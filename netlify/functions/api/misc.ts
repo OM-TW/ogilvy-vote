@@ -5,8 +5,9 @@ import select from './select';
 export const checkIsVote = async (respond: IRespond, req) => {
   if (respond.res) {
     if (respond.data) {
-      const { body = '00000' } = req;
-      const data = respond.data.filter((data) => data.extension === body.extension);
+      const { body = '' } = req;
+      const [data] = respond.data.filter((data) => data.extension === body.extension);
+
       if (!data) return { res: false, msg: customMessage.無該分機 };
       else {
         const voteRespond = await select({ collection: SETTING.mongodb[1].collection });

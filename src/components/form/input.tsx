@@ -18,8 +18,8 @@ const InputGroup = memo((props: TArgument) => {
     }
   };
   return (
-    <div className='flex w-full max-w-md flex-row items-center justify-center space-x-2'>
-      <div className='font-FZLanTingHeiT flex h-full w-full flex-1 items-center justify-end text-right text-2xl text-[var(--color-red)]'>
+    <div className='-ml-16 flex w-full max-w-md flex-row items-center justify-center space-x-2'>
+      <div className='flex h-full w-full flex-1 items-center justify-end text-right font-FZLanTingHeiT text-2xl text-[var(--color-red)]'>
         {props.label}
       </div>
       <div className='w-7/12'>

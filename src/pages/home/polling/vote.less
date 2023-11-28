@@ -7,9 +7,9 @@
     .type {
       padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
       width: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
 
+      mask-size: auto 100%;
+      mask-repeat: no-repeat;
       @img: './img/a.png';
     }
 
@@ -23,6 +23,12 @@
 
     &:hover {
       background-color: var(--color-red);
+      .type {
+        background-color: var(--color-gray);
+      }
+      .text {
+        background-color: var(--color-gray);
+      }
     }
   }
 
@@ -31,8 +37,9 @@
     background-color: var(--color-purple);
 
     .type {
-      background-image: url(@img);
+      background-color: var(--color-yellow);
 
+      mask-image: url(@img);
       @img: './img/a.png';
     }
 
@@ -49,8 +56,9 @@
     background-color: var(--color-yellow);
 
     .type {
-      background-image: url(@img);
+      background-color: var(--color-purple);
 
+      mask-image: url(@img);
       @img: './img/b.png';
     }
 

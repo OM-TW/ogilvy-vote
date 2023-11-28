@@ -48,7 +48,7 @@
     button[type='submit'] {
       background-color: var(--color-red);
 
-      @apply font-FZLanTingHeiT flex h-16 w-56 items-center justify-center rounded-2xl;
+      @apply flex h-16 w-56 items-center justify-center rounded-2xl font-FZLanTingHeiT;
 
       .conform {
         width: image-width(@img) * @scale;
@@ -68,6 +68,10 @@
         .conform {
           background-color: var(--color-red);
         }
+      }
+
+      * {
+        pointer-events: none;
       }
     }
   }

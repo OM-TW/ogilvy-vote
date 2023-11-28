@@ -12,6 +12,8 @@ const Modal = memo(() => {
       id='my_modal_4'
       className='modal modal-open'
       onClick={() => {
+        if (window.location.pathname.indexOf('admin') > 0) return;
+
         setContext({ type: ActionType.modal, state: { enabled: false } });
       }}
     >
