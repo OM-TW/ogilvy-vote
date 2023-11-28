@@ -17,3 +17,17 @@ const useInsert = () => {
   return [state, fetch] as const;
 };
 export default useInsert;
+
+const useInsertMany = () => {
+  const [, setContext] = useContext(Context);
+  const [state, setState] = useState<IRespond | undefined>();
+  const fetch = async (parm: { collection: string; data: TYPE[] }) => {
+    setContext({ type: ActionType.LoadingProcess, state: { enabled: true } });
+    const respond = (await Fetcher.post(REST_PATH.insertMany, parm)) as IRespond;
+    setState(respond);
+    setContext({ type: ActionType.LoadingProcess, state: { enabled: false } });
+  };
+  return [state, fetch] as const;
+};
+
+export { useInsertMany };

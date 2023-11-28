@@ -10,6 +10,8 @@ export const messages = {
   deleteError: 'Data deletion failed',
   updateSuccess: 'Data updated successfully',
   updateError: 'Data update failed',
+  dropSuccess: 'database drop successful.',
+  dropError: 'database drop error.',
 };
 
 export const customMessage = {

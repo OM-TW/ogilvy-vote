@@ -26,6 +26,7 @@ const Drawer = memo(({ children }: IReactProps) => (
             <Icon.database />
             Rest API Test
           </Link>
+          <Link to='/admin/import'>reset user DB</Link>
         </li>
       </ul>
     </div>

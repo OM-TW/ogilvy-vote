@@ -10,6 +10,7 @@ import './index.less';
 import Login from './login';
 import AdminMain from './main';
 import Test from './test';
+import Import from './import';
 
 const Admin = memo(() => {
   const [state, setState] = useState<TAdminState>(AdminState);
@@ -26,6 +27,7 @@ const Admin = memo(() => {
   const Page = useMemo(() => {
     if (!pathname) return <AdminMain />;
     else if (pathname === 'test') return <Test />;
+    else if (pathname === 'import') return <Import />;
     return <Collection />;
   }, [pathname]);
 

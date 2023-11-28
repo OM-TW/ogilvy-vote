@@ -3,11 +3,13 @@ export const REST_PATH = {
   connect: 'connect',
   select: 'select',
   insert: 'insert',
+  insertMany: 'insertMany',
   delete: 'delete',
   update: 'update',
   check: 'check',
   signIn: 'signIn',
   vote: 'vote',
+  drop: 'drop',
 };
 
 // export const TEASER_DATE = new Date(2023, 10, 30, 9, 0, 0);

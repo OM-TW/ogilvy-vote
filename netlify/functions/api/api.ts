@@ -6,10 +6,11 @@ import { SETTING } from '../../../setting';
 import { customMessage, messages } from '../config';
 import connect from './connect';
 import deleteOne from './delete';
-import insert from './insert';
+import insert, { insertMany } from './insert';
 import select from './select';
 import update from './update';
 import { checkIsVote } from './misc';
+import drop from './drop';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -49,6 +50,26 @@ router.post('/insert', async (req, res) => {
     res.status(200).json({ res: false, msg: messages.connectError });
   } else {
     const respond = await insert(req.body);
+    res.status(200).json(respond);
+  }
+});
+
+router.post('/drop', async (req, res) => {
+  const connection = await connect();
+  if (!connection.res) {
+    res.status(200).json({ res: false, msg: messages.connectError });
+  } else {
+    const respond = await drop(req.body);
+    res.status(200).json(respond);
+  }
+});
+
+router.post('/insertMany', async (req, res) => {
+  const connection = await connect();
+  if (!connection.res) {
+    res.status(200).json({ res: false, msg: messages.connectError });
+  } else {
+    const respond = await insertMany(req.body);
     res.status(200).json(respond);
   }
 });
