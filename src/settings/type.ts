@@ -61,12 +61,23 @@ export type TAlertState = Prettify<
 
 export type TStatusState = Prettify<IEnabled>;
 
+export enum ModalSizeType {
+  size11 = 'w-11/12',
+  size10 = 'w-10/12',
+  size9 = 'w-9/12',
+  size8 = 'w-8/12',
+  size7 = 'w-7/12',
+  size6 = 'w-6/12',
+  auto = 'w-auto',
+}
+
 export type TModalState = Prettify<
   IEnabled & {
     title: string;
     body: ReactNode;
     label: string;
     storage: any;
+    size?: ModalSizeType;
     onClose: () => void;
   }
 >;

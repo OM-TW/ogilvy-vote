@@ -3,7 +3,13 @@
 
   .ctx {
     background-color: var(--color-gray);
-    filter: drop-shadow(0 0 10px #111);
+    box-shadow: 0 0 0 #111;
+
     @apply relative flex h-full w-full flex-col rounded-3xl p-5;
+  }
+
+  .shadow {
+    box-shadow: 0 0 10px #111;
+    transition: 1s;
   }
 }

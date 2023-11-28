@@ -1,0 +1,126 @@
+.Conform {
+  @apply flex w-full max-w-sm flex-col items-start justify-start px-5;
+
+  .t-a {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-yellow);
+
+    mask-image: url(@img);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    @img: './img/a.png';
+  }
+
+  .t-b {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-purple);
+
+    mask-image: url(@img);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    @img: './img/b.png';
+  }
+
+  .t-a-t {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-yellow);
+
+    mask-image: url(@img);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    @img: './img/vote-a.svg';
+  }
+
+  .t-b-t {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-purple);
+
+    mask-image: url(@img);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    @img: './img/vote-b.svg';
+  }
+
+  .t0 {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+
+    mask-image: url(@img);
+    mask-size: cover;
+    @img: './img/t0.svg';
+  }
+
+  .back {
+    @scale: 0.6;
+    @apply flex flex-row items-center justify-start space-x-2 py-4;
+
+    * {
+      pointer-events: none;
+    }
+
+    .arrow {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+      background-color: var(--color-darkGray);
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      @img: './img/arrow.svg';
+    }
+
+    .text {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+      background-color: var(--color-darkGray);
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      mask-repeat: no-repeat;
+      @img: './img/back.svg';
+    }
+
+    &:hover {
+      .arrow {
+        background-color: var(--color-red);
+      }
+      .text {
+        background-color: var(--color-red);
+      }
+    }
+  }
+
+  .conform-ok {
+    background-color: var(--color-red);
+
+    @apply flex h-16 w-56 items-center justify-center rounded-2xl font-FZLanTingHeiT;
+
+    * {
+      pointer-events: none;
+    }
+
+    .text {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+      background-color: var(--color-gray);
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      @scale: 0.5;
+      @img: './img/conform.svg';
+    }
+
+    &:hover {
+      border-color: var(--color-red);
+      background-color: var(--color-gray);
+      @apply border-2;
+      .text {
+        background-color: var(--color-red);
+      }
+    }
+  }
+}

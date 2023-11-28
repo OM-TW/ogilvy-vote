@@ -1,0 +1,64 @@
+.Vote {
+  .ticket {
+    * {
+      pointer-events: none;
+    }
+
+    .type {
+      padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      @img: './img/a.png';
+    }
+
+    .text {
+      padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+      width: 100%;
+
+      mask-size: cover;
+      @img: './img/vote-a.svg';
+    }
+
+    &:hover {
+      background-color: var(--color-red);
+    }
+  }
+
+  .a {
+    border-color: var(--color-yellow);
+    background-color: var(--color-purple);
+
+    .type {
+      background-image: url(@img);
+
+      @img: './img/a.png';
+    }
+
+    .text {
+      background-color: var(--color-yellow);
+
+      mask-image: url(@img);
+      @img: './img/vote-a.svg';
+    }
+  }
+
+  .b {
+    border-color: var(--color-purple);
+    background-color: var(--color-yellow);
+
+    .type {
+      background-image: url(@img);
+
+      @img: './img/b.png';
+    }
+
+    .text {
+      background-color: var(--color-purple);
+
+      mask-image: url(@img);
+      @img: './img/vote-b.svg';
+    }
+  }
+}

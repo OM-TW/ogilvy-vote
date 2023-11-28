@@ -8,6 +8,7 @@ import {
   TAlertState,
   TContext,
   TLoadingProcessState,
+  ModalSizeType,
   TModalState,
   TStatusState,
 } from './type';
@@ -34,6 +35,7 @@ export const ModalState: TModalState = {
   title: 'title',
   body: 'message',
   label: 'close',
+  size: ModalSizeType.size11,
   storage: {},
   onClose: () => {},
 };

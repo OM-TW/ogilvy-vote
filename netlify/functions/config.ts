@@ -27,7 +27,6 @@ export const customMessage = {
   投票成功: 'Vote counted successfully.',
   投票遺失資料: 'Missing argument for parameter.',
   投票失敗: 'Vote failed.',
-
   // misc
   無參數帶入: 'Params not found',
 };

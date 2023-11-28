@@ -1,0 +1,28 @@
+.Finish {
+  @apply -mt-20 flex w-full max-w-md flex-col items-center justify-center space-y-8;
+
+  .title {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-red);
+
+    mask-image: url(@img);
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    @img: './img/finish-title.svg';
+  }
+
+  .time {
+    border-color: var(--color-red);
+    @apply w-full rounded-2xl border-2 px-10 py-3;
+
+    .text {
+      padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+      width: 100%;
+      background-image: url(@img);
+      background-size: cover;
+
+      @img: './img/finish-billing.png';
+    }
+  }
+}

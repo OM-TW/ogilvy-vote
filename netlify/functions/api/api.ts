@@ -107,8 +107,8 @@ router.post('/signIn', async (req, res) => {
           const { userID } = user;
           const password = userID.substr(String(userID).length - 4);
           if (body.password === password) {
-            res.status(200).json({ res: true, msg: customMessage.登入成功 });
-          } else res.status(200).json({ res: true, msg: customMessage.密碼錯誤 });
+            res.status(200).json({ res: true, msg: customMessage.登入成功, data: [body] });
+          } else res.status(200).json({ res: false, msg: customMessage.密碼錯誤 });
         } else {
           res
             .status(200)
