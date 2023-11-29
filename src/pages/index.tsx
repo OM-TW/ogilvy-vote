@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Admin from './admin';
 import Home from './home';
+import Winner from './winner';
 
 Click.install();
 Gtag.install(import.meta.env.VITE_GAID);
@@ -40,6 +41,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/admin' element={<Admin />} />
             <Route path={'/admin/:pathname'} element={<Admin />} />
+            <Route path={'/winner'} element={<Winner />} />
             <Route path='*' element={<Home />} />
           </Routes>
         </BrowserRouter>

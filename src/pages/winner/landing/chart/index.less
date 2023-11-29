@@ -1,0 +1,19 @@
+.Chart {
+  @apply relative z-30 flex h-60 w-60 items-center;
+
+  .ctx {
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: var(--color-red);
+    font-size: 9rem;
+    @apply flex h-full w-full items-center justify-center overflow-hidden rounded-full;
+  }
+
+  .title {
+    right: 100%;
+    margin-right: 40px;
+    text-wrap: nowrap;
+
+    @apply absolute font-paralucent text-6xl tracking-tighter;
+  }
+}

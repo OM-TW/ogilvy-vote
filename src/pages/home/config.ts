@@ -4,7 +4,6 @@ export const height = 0;
 export enum HomePageType {
   teaser = 'teaser',
   polling = 'polling',
-  billing = 'billing',
 }
 
 export enum HomeStepType {

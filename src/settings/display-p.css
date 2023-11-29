@@ -4,6 +4,7 @@
   --color-purple: rgb(137, 73, 255);
   --color-gray: #eee;
   --color-darkGray: #939393;
+  --color-midGray: #d7d7d7;
 }
 
 @supports (color: color(display-p3 1 1 1)) {
@@ -13,5 +14,6 @@
     --color-purple: color(display-p3 0.537254901960784 0.286274509803922 1);
     --color-gray: color(display-p3 0.9333333333333333 0.9333333333333333 0.9333333333333333);
     --color-darkGray: color(display-p3 0.5647058823529412 0.5647058823529412 0.5647058823529412);
+    --color-midGray: color(display-p3 0.8431372549019608 0.8431372549019608 0.8431372549019608);
   }
 }

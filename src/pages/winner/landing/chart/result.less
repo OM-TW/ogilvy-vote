@@ -1,0 +1,77 @@
+.ResultCard {
+  top: 100%;
+  left: 50%;
+  margin-top: 50px;
+  margin-left: 0 - @width * 0.5;
+  width: @width;
+
+  @width: 400px;
+
+  @apply absolute flex flex-col items-center justify-center space-y-8;
+
+  .text {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    width: 100%;
+    background-color: var(--color-yellow);
+
+    mask-repeat: no-repeat;
+    mask-size: 100%;
+    @img: './img/card-a.png';
+  }
+
+  .nextButton {
+    outline: none;
+    background-color: var(--color-red);
+    color: var(--color-gray);
+    @apply rounded-l-full rounded-r-full px-24 py-1 text-3xl;
+
+    * {
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: var(--color-gray);
+      color: var(--color-red);
+    }
+  }
+}
+
+.ResultCardA {
+  .text {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    background-color: var(--color-yellow);
+
+    mask-image: url(@img);
+    @img: './img/card-a.png';
+  }
+
+  .nextButton {
+    background-color: var(--color-yellow);
+    color: var(--color-purple);
+  }
+
+  .off {
+    background-color: var(--color-red);
+    color: var(--color-gray);
+  }
+}
+
+.ResultCardB {
+  .text {
+    padding-bottom: (unit(image-height(@img) / unit(image-width(@img))) * 100%);
+    background-color: var(--color-purple);
+
+    mask-image: url(@img);
+    @img: './img/card-b.png';
+  }
+
+  .nextButton {
+    background-color: var(--color-purple);
+    color: var(--color-yellow);
+  }
+
+  .off {
+    background-color: var(--color-red);
+    color: var(--color-gray);
+  }
+}

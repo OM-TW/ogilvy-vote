@@ -1,9 +1,10 @@
 @font-face {
-    font-family: 'ParalucentW00';
-    src: url('subset-ParalucentW00-DemiBold.woff2') format('woff2'),
-        url('subset-ParalucentW00-DemiBold.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
+  font-weight: bold;
+  font-style: normal;
+  font-family: 'ParalucentText';
+  src:
+    url('ParalucentText-Bold.woff2') format('woff2'),
+    url('ParalucentText-Bold.woff') format('woff');
 
+  font-display: swap;
+}

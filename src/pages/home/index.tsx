@@ -18,6 +18,7 @@ const Home = memo(() => {
     const keydown = (e: KeyboardEvent) => {
       const { key } = e;
       if (key === '.') navigate('/admin');
+      if (key === '/') navigate('/winner');
     };
 
     window.addEventListener('keydown', keydown);
@@ -27,14 +28,10 @@ const Home = memo(() => {
   const Page = useMemo(() => {
     const [day, hours, minute, second] = date;
     let currentPage = HomePageType.teaser;
-    if (!day && !hours && !minute && !second) {
-      if (page === HomePageType.billing) currentPage = HomePageType.billing;
-      else currentPage = HomePageType.polling;
-    } else currentPage = HomePageType.teaser;
+    if (!day && !hours && !minute && !second) currentPage = HomePageType.polling;
+    else currentPage = HomePageType.teaser;
 
     switch (currentPage) {
-      case HomePageType.billing:
-        return <div />;
       case HomePageType.polling:
         return <Polling />;
       default:

@@ -7,7 +7,7 @@ export default {
   theme: {
     fontFamily: {
       ...fontFamily,
-      paralucent: ['ParalucentW00', 'sans-serif'],
+      paralucent: ['ParalucentText', 'sans-serif'],
       FZLanTingHeiT: ['FZLanTingHeiT-H-GB', 'sans'],
     },
   },

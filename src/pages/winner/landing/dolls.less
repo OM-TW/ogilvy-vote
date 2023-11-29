@@ -1,0 +1,75 @@
+.Dolls {
+  @apply absolute top-0 z-30 h-full w-full;
+
+  & > div:nth-child(1) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -430px;
+    margin-left: -630px;
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+
+    @scale: 0.5;
+    @img: './img/doll-0.png';
+
+    &::before {
+      background-image: url(@img);
+      background-size: 100%;
+      content: '';
+      transform-origin: bottom center;
+      animation: dollSwingLeft 10s ease-in-out infinite;
+      @apply absolute z-10 h-full w-full;
+    }
+  }
+
+  & > div:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    margin-top: -260px;
+    margin-right: -670px;
+    width: image-width(@img) * @scale;
+    height: image-height(@img) * @scale;
+
+    @scale: 0.5;
+    @img: './img/doll-1.png';
+    &::after {
+      background-image: url(@img);
+      background-size: 100%;
+      content: '';
+      transform-origin: bottom center;
+      animation: dollSwingRight 10s ease-in-out -2s infinite;
+
+      @apply absolute z-10 h-full w-full;
+    }
+  }
+
+  @keyframes dollSwingLeft {
+    0% {
+      transform: rotate(1deg);
+    }
+
+    50% {
+      transform: rotate(-5deg);
+    }
+
+    100% {
+      transform: rotate(1deg);
+    }
+  }
+
+  @keyframes dollSwingRight {
+    0% {
+      transform: rotate(8deg);
+    }
+
+    50% {
+      transform: rotate(-1deg);
+    }
+
+    100% {
+      transform: rotate(8deg);
+    }
+  }
+}
