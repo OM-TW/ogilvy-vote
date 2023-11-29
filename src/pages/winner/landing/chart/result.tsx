@@ -5,6 +5,7 @@ import { memo, useContext, useEffect, useMemo, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { Props, WinnerContext, WinnerStepType } from '../../config';
 import './result.less';
+import CharTransition from 'lesca-react-char-transition';
 
 const DefaultProperty = { opacity: 0, y: 500 };
 
@@ -35,8 +36,44 @@ const Button = ({ data }: Pick<Props, 'data'>) => {
 
   return (
     <button style={style} id='next' className={twMerge('nextButton', className)}>
-      {text}
+      <CharTransition duration={800} gap={50}>
+        {text}
+      </CharTransition>
     </button>
+  );
+};
+
+const Final = ({ data }: Pick<Props, 'data'>) => {
+  const [style, setStyle] = useTween({ opacity: 0, y: 100 });
+  const [state] = useContext(WinnerContext);
+  const [ticket, setTicket] = useState({ A: 0, B: 0 });
+  const { vote } = state;
+
+  const className = useMemo(() => {
+    const A = vote.filter((v) => v.vote);
+    const B = vote.filter((v) => !v.vote);
+    setTicket({ A: A.length, B: B.length });
+    if (A >= B) return 'onA';
+    else return 'onB';
+  }, [vote]);
+
+  useEffect(() => {
+    if (data) {
+      const { status } = data;
+      if (status) setStyle({ opacity: 1, y: 0 }, { delay: OPEN_DELAY });
+    }
+  }, [data]);
+
+  return (
+    <div style={style} className='Final'>
+      <div className={className}>
+        <div className='t0' />
+        <span>{ticket.A}</span>
+        <div className='t1' />
+        <span>{ticket.B}</span>
+        <div className='t2' />
+      </div>
+    </div>
   );
 };
 
@@ -96,6 +133,7 @@ const Result = memo(({ data, step }: Props) => {
       <div className='flex w-full justify-center'>
         {step === WinnerStepType.Total && <Button data={data} />}
       </div>
+      <div className='w-full'>{step === WinnerStepType.Total && <Final data={data} />}</div>
     </div>
   );
 });

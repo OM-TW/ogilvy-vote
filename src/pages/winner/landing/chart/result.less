@@ -75,3 +75,63 @@
     color: var(--color-gray);
   }
 }
+
+.Final {
+  @apply flex w-full flex-row items-center justify-center;
+
+  & > div {
+    font-size: 2.3rem;
+
+    @scale: 0.4;
+
+    & > span {
+      margin-top: 2px;
+      @apply ml-2 mr-1;
+    }
+    @apply flex flex-row items-center justify-center;
+    .t0 {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      @img: './img/t0.svg';
+    }
+    .t1 {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      @img: './img/t1.svg';
+    }
+    .t2 {
+      width: image-width(@img) * @scale;
+      height: image-height(@img) * @scale;
+
+      mask-image: url(@img);
+      mask-size: 100%;
+      @img: './img/t2.svg';
+    }
+  }
+
+  .onA {
+    background-color: transparent;
+    color: var(--color-yellow);
+    .t0,
+    .t1,
+    .t2 {
+      background-color: var(--color-yellow);
+    }
+  }
+
+  .onB {
+    background-color: transparent;
+    color: var(--color-purple);
+    .t0,
+    .t1,
+    .t2 {
+      background-color: var(--color-purple);
+    }
+  }
+}

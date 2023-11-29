@@ -46,7 +46,7 @@ const Chart = memo((props: Props) => {
   return (
     <div className='Chart'>
       <div className={twMerge('title', className, transitionClassName)}>
-        <CharTransition duration={800} gap={10} preChar='?'>
+        <CharTransition duration={800} gap={50} preChar='?'>
           {interText}
         </CharTransition>
       </div>

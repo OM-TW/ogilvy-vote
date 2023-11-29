@@ -7,6 +7,7 @@ const getAB = ({ vote }: { vote: TVote[] }) => {
   const { length: countA } = voteA;
   const A = Number(((countA / count) * 100).toFixed(1));
   const B = 100 - A;
+  if (A === B) return { A: A - 0.1, B: B + 0.1 };
   return { A, B };
 };
 

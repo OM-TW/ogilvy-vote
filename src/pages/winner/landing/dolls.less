@@ -1,16 +1,16 @@
 .Dolls {
+  @scale: 0.5 * 0.85;
   @apply absolute top-0 z-30 h-full w-full;
 
   & > div:nth-child(1) {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -430px;
-    margin-left: -630px;
+    margin-top: -430px * 0.85;
+    margin-left: -630px * 0.85;
     width: image-width(@img) * @scale;
     height: image-height(@img) * @scale;
 
-    @scale: 0.5;
     @img: './img/doll-0.png';
 
     &::before {
@@ -27,12 +27,11 @@
     position: absolute;
     top: 50%;
     right: 50%;
-    margin-top: -260px;
-    margin-right: -670px;
+    margin-top: -260px * 0.85;
+    margin-right: -670px * 0.85;
     width: image-width(@img) * @scale;
     height: image-height(@img) * @scale;
 
-    @scale: 0.5;
     @img: './img/doll-1.png';
     &::after {
       background-image: url(@img);

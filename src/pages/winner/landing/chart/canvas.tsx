@@ -76,7 +76,7 @@ const Canvas = memo(({ data, step }: Props) => {
     if (!data) return '?';
     else {
       const { status } = data;
-      if (!status) return '?';
+      if (!status) return <div className='ml-[5px] mt-[10px]'>?</div>;
       else return <canvas ref={ref} width={240} height={240} className='h-full w-full' />;
     }
   }, [data, step]);

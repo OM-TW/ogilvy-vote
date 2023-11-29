@@ -10,7 +10,7 @@ const Span = ({ value }: { value: string | number }) => {
 
   useEffect(() => {
     if (typeof value === 'string') return;
-    setStyle({ opacity: value }, value === 0 ? 500 : OPEN_DELAY);
+    setStyle({ opacity: value }, value === 0 ? 1000 : OPEN_DELAY);
   }, [value]);
 
   if (typeof value === 'string') return <span className='mx-1'>??</span>;
