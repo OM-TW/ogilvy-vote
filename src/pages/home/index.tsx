@@ -1,11 +1,12 @@
 import { TEASER_DATE } from '@/settings/config';
+import QueryString from 'lesca-url-parameters';
 import useCountdown from 'lesca-use-countdown';
 import { memo, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HomeContext, HomePageType, HomeState, THomeState } from './config';
 import './index.less';
-import Teaser from './teaser';
 import Polling from './polling';
+import Teaser from './teaser';
 
 const Home = memo(() => {
   const value = useState<THomeState>(HomeState);
@@ -15,6 +16,9 @@ const Home = memo(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const page = QueryString.get('page');
+    if (page) navigate(`/${page}`);
+
     const keydown = (e: KeyboardEvent) => {
       const { key } = e;
       if (key === '.') navigate('/admin');

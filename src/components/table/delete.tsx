@@ -27,6 +27,7 @@ const Delete = memo(({ children, collection, data, update }: IReactProps & TParm
   return (
     <button
       onClick={() => {
+        if (!confirm('確定要刪除？')) return;
         const { _id } = data;
         if (_id) {
           const currentData = { _id };
