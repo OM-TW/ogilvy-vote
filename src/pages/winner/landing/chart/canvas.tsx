@@ -64,7 +64,9 @@ const Canvas = memo(({ data, step }: Props) => {
           const ctx = canvas.getContext('2d');
           if (ctx) {
             if (step === WinnerStepType.Unset) return;
+
             const left = result[step].A / 100;
+            if (result[step].A === 0 && result[step].B === 0) return;
             setStyle({ left, right: Math.PI / 2 - Math.PI * 2 * (1 - left) }, OPEN_DELAY);
           }
         }

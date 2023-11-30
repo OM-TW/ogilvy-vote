@@ -5,8 +5,11 @@ const getAB = ({ vote }: { vote: TVote[] }) => {
   const { length: count } = vote;
   const voteA = vote.filter((data) => data.vote);
   const { length: countA } = voteA;
+  if (count === 0) return { A: 0, B: 0 };
+
   const A = Number(((countA / count) * 100).toFixed(1));
   const B = 100 - A;
+
   if (A === B) return { A: A - 0.1, B: B + 0.1 };
   return { A, B };
 };

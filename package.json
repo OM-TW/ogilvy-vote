@@ -32,7 +32,8 @@
     "react-dom": "^18.2.0",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.20.0",
-    "serverless-http": "^3.2.0"
+    "serverless-http": "^3.2.0",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@netlify/functions": "^2.4.0",
