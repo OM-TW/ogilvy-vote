@@ -1,0 +1,4 @@
+/admin  /index.html  200
+/winner  /index.html  200
+/api/*  /.netlify/functions/api/:splat 200
+
