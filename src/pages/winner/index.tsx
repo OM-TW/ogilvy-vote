@@ -16,21 +16,23 @@ const Winner = memo(() => {
 
   useEffect(() => {
     if (respond) {
-      const data = respond.data as TYPE[];
-      const currentData: { [k: string]: any } = data[0];
+      if (respond.data) {
+        const data: Exclude<TYPE, { vote: boolean }>[] = respond.data;
+        const [currentData] = data;
 
-      if (data.length === 0) {
-        alert('資料庫沒有任何資料');
-        return;
-      }
+        if (data.length === 0) {
+          alert('資料庫沒有任何資料');
+          return;
+        }
 
-      if (currentData.name) {
-        const user = respond.data as TUser[];
-        setState((S) => ({ ...S, user }));
-        getUsers({ collection: 'vote' });
-      } else {
-        const vote = respond.data as TVote[];
-        setState((S) => ({ ...S, vote }));
+        if (currentData.name) {
+          const user = respond.data as TUser[];
+          setState((S) => ({ ...S, user }));
+          getUsers({ collection: 'vote' });
+        } else {
+          const vote = respond.data as TVote[];
+          setState((S) => ({ ...S, vote }));
+        }
       }
     }
   }, [respond]);
