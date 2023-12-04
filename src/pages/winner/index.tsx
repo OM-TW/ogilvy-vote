@@ -17,7 +17,7 @@ const Winner = memo(() => {
   useEffect(() => {
     if (respond) {
       if (respond.data) {
-        const data: Exclude<TYPE, { vote: boolean }>[] = respond.data;
+        const data: Extract<TYPE, { name: string }>[] = respond.data;
         const [currentData] = data;
 
         if (data.length === 0) {
